@@ -34,31 +34,51 @@ namespace Chess
 
       int newOX =  opponent.GetPieceX();
       int newOY =  opponent.GetPieceY();
-    
+
+
+      bool result = Program.CheckAttack( newQX, newQY, newOX, newOY);
+
+        if (result == true) 
+        {
+          Console.WriteLine("hit");
+        } 
+        else 
+        {
+          Console.WriteLine("miss");
+        }
+
+    }
+
+    public static bool CheckAttack(int newQX, int newQY, int newOX, int newOY)  
+    {
       for (int i = 0; i < 8; i++)
       {
         if ((newQX == newOX) || (newQY == newOY)) 
         {
-          Console.WriteLine("hit");
+          return true;
         }
         else if ((newQX + i == newOX) && (newQY + i == newOY))
         {
-          Console.WriteLine("hit");
+          return true;
         }
         else if ((newQX - i == newOX) && (newQY - i == newOY))
         {
-          Console.WriteLine("hit");
+          return true;
         }
         else if ((newQX + i == newOX) && (newQY - i == newOY))
         {
-          Console.WriteLine("hit");
+          return true;
         }
         else if ((newQX - i == newOX) && (newQY + i == newOY))
         {
-          Console.WriteLine("hit");
+          return true;
         }
-       
+        else 
+        {
+          return false;
+        }
       }
+      return false;
     }
   }
 }
